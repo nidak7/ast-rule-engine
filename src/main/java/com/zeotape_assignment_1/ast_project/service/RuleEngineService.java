@@ -12,12 +12,11 @@ public class RuleEngineService {
     private static final Set<String> VALID_ATTRIBUTES = new HashSet<>(Arrays.asList("age", "department", "salary", "experience", "spend"));
     private static final Set<String> VALID_FUNCTIONS = new HashSet<>(Arrays.asList("isAdult", "hasExperience"));
 
-    // Create a single rule from a rule string
+
     public Node createRule(String ruleString) {
         return parseRule(ruleString);
     }
 
-    // Parse the rule into an AST structure
     private Node parseRule(String rule) {
         rule = rule.trim();
         if (rule.isEmpty()) {
@@ -108,7 +107,7 @@ public class RuleEngineService {
         return 0;
     }
 
-    // Combine multiple rules into a single combined rule
+    
     public Node combineRules(List<String> ruleStrings) {
         List<Node> nodes = new ArrayList<>();
         for (String ruleString : ruleStrings) {
@@ -121,12 +120,12 @@ public class RuleEngineService {
 
         Node combinedNode = nodes.get(0);
         for (int i = 1; i < nodes.size(); i++) {
-            combinedNode = new Node("operator", combinedNode, nodes.get(i), "AND"); // You can also customize with OR
+            combinedNode = new Node("operator", combinedNode, nodes.get(i), "AND"); 
         }
         return combinedNode;
     }
 
-    // Evaluate a rule against user data
+  
     public boolean evaluateRule(Node node, Map<String, Object> userData) {
         if ("operator".equals(node.getType())) {
             if ("AND".equals(node.getValue())) {
@@ -143,7 +142,7 @@ public class RuleEngineService {
         return false;
     }
 
-    // Evaluate condition logic
+   
     private boolean evaluateCondition(String condition, Map<String, Object> userData) {
         String[] parts = condition.split(" ");
         String attribute = parts[0];
@@ -175,7 +174,7 @@ public class RuleEngineService {
         return false;
     }
 
-    // Evaluate function logic
+   
     private boolean evaluateFunction(Node functionNode, Map<String, Object> userData) {
         String functionName = functionNode.getValue();
         String param = functionNode.getUserValue();
@@ -190,7 +189,7 @@ public class RuleEngineService {
         }
     }
 
-    // Modify an existing rule in the AST
+   
     public Node modifyRule(Node ast, String attribute, String newOperator, String newValue) {
         if (ast == null) {
             throw new IllegalArgumentException("AST cannot be null.");
@@ -207,7 +206,7 @@ public class RuleEngineService {
         return ast;
     }
 
-    // Validations
+   
     private boolean isValidOperator(String operator) {
         return operator.equals(">") || operator.equals("<") || operator.equals("=") || operator.equals(">=") || operator.equals("<=");
     }
