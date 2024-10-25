@@ -99,27 +99,22 @@ Once the application is running, you can use **Postman** to test the following e
   ```
 
 #### 4. **Modify a Rule**
-- **Endpoint**: `PUT /api/rules/{id}`
-- **Description**: Modifies an existing rule by its ID, allowing updates to attributes, operators, or values.
+- **Endpoint**: `PUT /api/rules/modify`
+- **Description**: Modifies an existing rule based on provided parameters, including the rule itself, the attribute to change, the new operator, and the new value.
 - **Request Body Example**:
   ```json
   {
-    "attribute": "income",
-    "operator": "<",
-    "value": "70000"
+    "rule": "age > 18",
+    "attribute": "age",
+    "newOperator": "<",
+    "newValue": "25"
   }
   ```
 - **Expected Response**:
   ```json
   {
-    "id": 1,
-    "attribute": "income",
-    "operator": "<",
-    "value": "70000",
-    "message": "Rule updated successfully."
+    "rule": "age < 25",
+    "message": "Rule modified successfully."
   }
   ```
 
----
-
-This section now includes all key functionalities, allowing users to test the creation, combination, evaluation, and modification of rules within your AST rule engine project. Let me know if you'd like any adjustments or if you're ready for the next section!
