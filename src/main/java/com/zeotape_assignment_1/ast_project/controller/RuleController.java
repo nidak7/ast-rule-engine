@@ -16,7 +16,7 @@ public class RuleController {
     @Autowired
     private RuleEngineService ruleEngineService;
 
-    // Create a new rule
+    
     @PostMapping("/create")
     public ResponseEntity<Node> createRule(@RequestBody Map<String, String> request) {
         String rule = request.get("rule");
@@ -24,14 +24,14 @@ public class RuleController {
         return ResponseEntity.ok(ast);
     }
 
-    // Combine rules
+   
     @PostMapping("/combine")
     public ResponseEntity<Node> combineRules(@RequestBody List<String> rules) {
         Node combinedAST = ruleEngineService.combineRules(rules);
         return ResponseEntity.ok(combinedAST);
     }
 
-    // Evaluate rule against user data
+  
     @PostMapping("/evaluate")
     public ResponseEntity<Boolean> evaluateRule(@RequestBody Map<String, Object> request) {
         Node ast = ruleEngineService.createRule((String) request.get("rule"));
@@ -40,7 +40,7 @@ public class RuleController {
         return ResponseEntity.ok(result);
     }
 
-    // Modify an existing rule
+
     @PutMapping("/modify")
     public ResponseEntity<Node> modifyRule(@RequestBody Map<String, String> request) {
         String rule = request.get("rule");
