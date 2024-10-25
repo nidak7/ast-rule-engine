@@ -56,6 +56,10 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 Once the application is running, you can use **Postman** to test the following endpoints.
 
+Insert this data into database,
+((age > 30 AND department = 'Sales') OR (age < 25 AND department = 'Marketing'))
+((age > 30 AND department = 'Marketing')) AND (salary > 20000 OR experience > 5)
+
 ### API Endpoints
 
 #### 1. **Create a Rule**
