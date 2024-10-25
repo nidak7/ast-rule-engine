@@ -29,3 +29,97 @@ The AST-Based Rule Engine is a Java application designed to parse, create, and e
    ```bash
    git clone https://github.com/nidak7/ast-rule-engine.git
    cd ast-rule-engine
+
+## Usage
+
+Once the application is running, you can use **Postman** to test the following endpoints.
+
+### API Endpoints
+
+#### 1. **Create a Rule**
+- **Endpoint**: `POST /api/rules`
+- **Description**: Creates a new rule based on attributes like age, department, income, and spend.
+- **Request Body Example**:
+  ```json
+  {
+    "attribute": "age",
+    "operator": ">",
+    "value": "18"
+  }
+  ```
+- **Expected Response**:
+  ```json
+  {
+    "id": 1,
+    "attribute": "age",
+    "operator": ">",
+    "value": "18",
+    "message": "Rule created successfully."
+  }
+  ```
+
+#### 2. **Combine Rules**
+- **Endpoint**: `POST /api/rules/combine`
+- **Description**: Combines two rules using an operator (e.g., `AND`, `OR`) to create more complex conditions.
+- **Request Body Example**:
+  ```json
+  {
+    "rule1Id": 1,
+    "rule2Id": 2,
+    "operator": "AND"
+  }
+  ```
+- **Expected Response**:
+  ```json
+  {
+    "combinedRuleId": 3,
+    "message": "Rules combined successfully."
+  }
+  ```
+
+#### 3. **Evaluate a Rule**
+- **Endpoint**: `POST /api/rules/evaluate`
+- **Description**: Evaluates a rule based on provided attributes to determine if it meets the specified criteria.
+- **Request Body Example**:
+  ```json
+  {
+    "attributes": {
+      "age": 25,
+      "income": 50000
+    },
+    "ruleId": 1
+  }
+  ```
+- **Expected Response**:
+  ```json
+  {
+    "result": true,
+    "message": "Rule evaluation successful."
+  }
+  ```
+
+#### 4. **Modify a Rule**
+- **Endpoint**: `PUT /api/rules/{id}`
+- **Description**: Modifies an existing rule by its ID, allowing updates to attributes, operators, or values.
+- **Request Body Example**:
+  ```json
+  {
+    "attribute": "income",
+    "operator": "<",
+    "value": "70000"
+  }
+  ```
+- **Expected Response**:
+  ```json
+  {
+    "id": 1,
+    "attribute": "income",
+    "operator": "<",
+    "value": "70000",
+    "message": "Rule updated successfully."
+  }
+  ```
+
+---
+
+This section now includes all key functionalities, allowing users to test the creation, combination, evaluation, and modification of rules within your AST rule engine project. Let me know if you'd like any adjustments or if you're ready for the next section!
