@@ -24,7 +24,7 @@ public class Rule {
     @Column(name = "`condition`")
     private String condition;
 
-    private String operator; // AND/OR
+    private String operator;
 
     public Rule(String ruleString, String astRepresentation) {
         this.ruleString = ruleString;
