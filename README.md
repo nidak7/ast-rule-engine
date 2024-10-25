@@ -30,6 +30,28 @@ The AST-Based Rule Engine is a Java application designed to parse, create, and e
    git clone https://github.com/nidak7/ast-rule-engine.git
    cd ast-rule-engine
 
+### Configuration
+
+Before running the application, you need to configure the `application.properties` file located in `src/main/resources`. Below are the required properties and how to set them up.
+
+#### Step 1: Database Configuration
+You need to provide your MySQL database connection details in the `application.properties` file.
+
+1. Open the `application.properties` file.
+2. Set the following properties:
+
+```properties
+spring.application.name=ast-project
+spring.datasource.url=jdbc:mysql://localhost:3306/zeotap_assignment_1
+spring.datasource.username=<your-database-username>
+spring.datasource.password=<your-database-password>
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Hibernate properties
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+ ```
 ## Usage
 
 Once the application is running, you can use **Postman** to test the following endpoints.
