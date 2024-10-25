@@ -27,5 +27,5 @@ The AST-Based Rule Engine is a Java application designed to parse, create, and e
 1. **Clone the Repository**  
    Clone the project repository from GitHub:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/nidak7/ast-rule-engine.git
+   cd ast-rule-engine
